@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  database:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - psql-data:/var/lib/postgresql/data
+      - "./init.sql/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db_fiber
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 1333:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: database
+
+volumes:
+  psql-data:
