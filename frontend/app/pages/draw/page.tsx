@@ -58,6 +58,7 @@ const Draw = () => {
   const [list, setList] = useState<ListFormProps>([]);
   const [selectMode, setSelectMode] = useState<SelectValue>("select");
   const [selectedForm, setSelectedForm] = useState<SelectedFormProps>(null);
+  const selectedFormRef = useRef<SelectedFormProps>(null);
   const [formSelectMode, setFormSelectMode] = useState<string | null>(null);
 
   // initialisations
@@ -87,7 +88,7 @@ const Draw = () => {
           setCamera,
           windowDimension,
           setCursorPosition,
-          selectedForm
+          selectedFormRef
         );
 
         return () => {
@@ -95,10 +96,11 @@ const Draw = () => {
         };
       }
     }
-  }, [windowDimension, camera.zoom, selectedForm]);
+  }, []);
 
   // Redessine le canvas lorsque la caméra ou la taille change
   useEffect(() => {
+    selectedFormRef.current = selectedForm;
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
@@ -106,7 +108,14 @@ const Draw = () => {
         drawInfiniteCanvas(ctx, camera, windowDimension, list, selectedForm);
       }
     }
-  }, [camera, windowDimension, list, selectedForm]);
+  }, [
+    camera,
+    windowDimension,
+    list,
+    selectedForm,
+    windowDimension,
+    camera.zoom,
+  ]);
 
   //functions
 
@@ -225,6 +234,12 @@ const Draw = () => {
           </button>
           <button className="text-white" onClick={() => console.log(list)}>
             list
+          </button>
+          <button
+            className="text-white"
+            onClick={() => console.log(selectedFormRef.current)}
+          >
+            ref
           </button>
         </div>
       </div>

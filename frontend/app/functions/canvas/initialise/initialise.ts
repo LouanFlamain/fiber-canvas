@@ -2,7 +2,7 @@ import { Camera } from "@/app/types/canvas/camera";
 import { windowDimensionProps } from "@/app/types/canvas/windowDimension";
 import { LastMousePosition } from "./type";
 import { drawInfiniteCanvas } from "../draw/draw";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { currentCursorPosition } from "../cursor-position/cursorPosition";
 import { zoom } from "../zoom/zoom";
@@ -15,7 +15,7 @@ export const initialiseInfiniteCanvas = (
   setCamera: (cameraUpdater: (prevCamera: Camera) => Camera) => void,
   dimension: windowDimensionProps,
   setCursorPosition: Dispatch<SetStateAction<CursorPostion>>,
-  selectedForm: SelectedFormProps
+  selectedFormRef: React.MutableRefObject<SelectedFormProps>
 ) => {
   drawInfiniteCanvas(ctx, camera, dimension);
   let lastMousePosition: LastMousePosition = { x: 0, y: 0 };
@@ -35,7 +35,7 @@ export const initialiseInfiniteCanvas = (
 
   const onMouseMove = (event: MouseEvent) => {
     currentCursorPosition(event, setCursorPosition, camera);
-    if (selectedForm === null) {
+    if (selectedFormRef.current === null) {
       if (mapIsMoving) {
         const rect = canvas.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
