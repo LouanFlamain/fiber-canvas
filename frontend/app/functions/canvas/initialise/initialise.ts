@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { currentCursorPosition } from "../cursor-position/cursorPosition";
 import { zoom } from "../zoom/zoom";
+import { SelectedFormProps } from "@/app/types/selectedForm";
 
 export const initialiseInfiniteCanvas = (
   canvas: HTMLCanvasElement,
@@ -13,7 +14,8 @@ export const initialiseInfiniteCanvas = (
   camera: Camera,
   setCamera: (cameraUpdater: (prevCamera: Camera) => Camera) => void,
   dimension: windowDimensionProps,
-  setCursorPosition: Dispatch<SetStateAction<CursorPostion>>
+  setCursorPosition: Dispatch<SetStateAction<CursorPostion>>,
+  selectedForm: SelectedFormProps
 ) => {
   drawInfiniteCanvas(ctx, camera, dimension);
   let lastMousePosition: LastMousePosition = { x: 0, y: 0 };
@@ -33,26 +35,28 @@ export const initialiseInfiniteCanvas = (
 
   const onMouseMove = (event: MouseEvent) => {
     currentCursorPosition(event, setCursorPosition, camera);
-    if (mapIsMoving) {
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
+    if (selectedForm === null) {
+      if (mapIsMoving) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
 
-      const delta = {
-        dx: mouseX - lastMousePosition.x,
-        dy: mouseY - lastMousePosition.y,
-      };
+        const delta = {
+          dx: mouseX - lastMousePosition.x,
+          dy: mouseY - lastMousePosition.y,
+        };
 
-      setCamera((prevCamera) => ({
-        ...prevCamera,
-        x: prevCamera.x - delta.dx,
-        y: prevCamera.y - delta.dy,
-      }));
+        setCamera((prevCamera) => ({
+          ...prevCamera,
+          x: prevCamera.x - delta.dx,
+          y: prevCamera.y - delta.dy,
+        }));
 
-      lastMousePosition = {
-        x: mouseX,
-        y: mouseY,
-      };
+        lastMousePosition = {
+          x: mouseX,
+          y: mouseY,
+        };
+      }
     }
   };
 

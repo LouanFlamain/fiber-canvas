@@ -9,8 +9,8 @@ export const drawInfiniteCanvas = (
   ctx: CanvasRenderingContext2D,
   camera: Camera,
   dimension: windowDimensionProps,
-  list: ListFormProps,
-  select: SelectedFormProps
+  list?: ListFormProps,
+  select?: SelectedFormProps
 ) => {
   //définis canvas de base
   ctx.clearRect(0, 0, dimension.width, dimension.height);

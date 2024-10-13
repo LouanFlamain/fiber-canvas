@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export const square = (
   list: ListFormProps,
-  setList: Dispatch<SetStateAction<FormProps>>,
+  setList: Dispatch<SetStateAction<ListFormProps>>,
   cursor_position: CursorPostion
 ) => {
   const squareItem: SquareProps = {
@@ -17,7 +17,7 @@ export const square = (
     posX: cursor_position.x - 50,
     posY: cursor_position.y - 50,
     color: "pink",
-    rotate: 45,
+    rotate: 0,
   };
   setList((prevItem) => [...prevItem, squareItem]);
 };

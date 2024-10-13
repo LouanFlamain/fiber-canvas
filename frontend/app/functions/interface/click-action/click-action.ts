@@ -10,7 +10,7 @@ import { SelectedFormProps } from "@/app/types/selectedForm";
 export const clickAction = (
   mode: SelectValue,
   list: ListFormProps,
-  setList: Dispatch<SetStateAction<FormProps>>,
+  setList: Dispatch<SetStateAction<ListFormProps>>,
   cursor_position: CursorPostion,
   setSelectedForm: Dispatch<SetStateAction<SelectedFormProps>>
 ) => {

@@ -7,7 +7,7 @@ export const currentCursorPosition = (
   setCursorPosition: Dispatch<SetStateAction<CursorPostion>>,
   camera: Camera
 ) => {
-  //console.log(camera.zoom);
+  console.log(event.clientX, camera.x);
   setCursorPosition({
     x: camera.x + event.clientX,
     y: camera.y + event.clientY,
