@@ -1,6 +1,7 @@
 import { FormProps } from "@/app/types/canvas/listForms";
+import { SquareProps } from "@/app/types/forms/square";
 
-export const square = (ctx: CanvasRenderingContext2D, element: FormProps) => {
+export const square = (ctx: CanvasRenderingContext2D, element: SquareProps) => {
   ctx.save(); // Sauvegarde l'état initial du contexte
 
   // Appliquer la rotation si nécessaire

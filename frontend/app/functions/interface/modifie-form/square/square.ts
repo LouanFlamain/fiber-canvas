@@ -1,13 +1,14 @@
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { FormProps, ListFormProps } from "@/app/types/canvas/listForms";
+import { SquareProps } from "@/app/types/forms/square";
 import { Dispatch, SetStateAction } from "react";
 
 export const square = (
-  element: FormProps,
+  element: SquareProps,
   action_point: string | null,
   cursor_position: CursorPostion,
   lockedCursorPosition: CursorPostion,
-  lockedItem: FormProps,
+  lockedItem: SquareProps,
   setList: Dispatch<SetStateAction<ListFormProps>>
 ) => {
   //console.log(cursor_position);

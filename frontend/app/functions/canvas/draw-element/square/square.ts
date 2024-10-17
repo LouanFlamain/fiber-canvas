@@ -1,9 +1,11 @@
 import { SquareProps } from "@/app/types/forms/square";
 
 export const square = (ctx: CanvasRenderingContext2D, element: SquareProps) => {
+  ctx.save();
+  ctx.beginPath();
   ctx.fillStyle = element.color;
 
-  if (element.rotate > 0) {
+  if (element.rotate !== 0) {
     ctx.translate(
       element.posX + element.width / 2,
       element.posY + element.height / 2
@@ -16,4 +18,6 @@ export const square = (ctx: CanvasRenderingContext2D, element: SquareProps) => {
   }
 
   ctx.fillRect(element.posX, element.posY, element.width, element.height);
+  ctx.closePath();
+  ctx.restore();
 };

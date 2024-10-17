@@ -232,6 +232,20 @@ const Draw = () => {
           >
             square
           </button>
+          <button
+            className="text-white"
+            value={"circle"}
+            onClick={handleClickMode}
+          >
+            circle
+          </button>
+          <button
+            className="text-white"
+            value={"triangle"}
+            onClick={handleClickMode}
+          >
+            triangle
+          </button>
           <button className="text-white" onClick={() => console.log(list)}>
             list
           </button>

@@ -4,4 +4,4 @@ export type SelectModeProps = {
   mode: SelectValue;
   setSelectMode: Dispatch<SetStateAction<SelectValue>>;
 };
-export type SelectValue = "select" | "square";
+export type SelectValue = "select" | "square" | "circle" | "triangle";

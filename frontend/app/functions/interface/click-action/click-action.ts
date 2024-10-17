@@ -21,5 +21,10 @@ export const clickAction = (
     case "square":
       createForm().square(list, setList, cursor_position);
       break;
+    case "circle":
+      createForm().circle(list, setList, cursor_position);
+      break;
+    case "triangle":
+      createForm().triangle(list, setList, cursor_position);
   }
 };
