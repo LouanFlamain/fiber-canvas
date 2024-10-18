@@ -132,7 +132,14 @@ const Draw = () => {
       y: cursorPositon.y + camera.y,
     };
     console.log(cursor_position);
-    clickAction(selectMode, list, setList, cursor_position, setSelectedForm);
+    clickAction(
+      selectMode,
+      list,
+      setList,
+      cursor_position,
+      setSelectedForm,
+      setSelectMode
+    );
   };
 
   const handleMouseDownAction = () => {

@@ -2,12 +2,15 @@ import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { ListFormProps } from "@/app/types/canvas/listForms";
 import { TriangleProps } from "@/app/types/forms/triangle";
 import { Dispatch, SetStateAction } from "react";
+import triangle_json from "../../../../interface/items/triangle.json";
 
 export const triangle = (
   list: ListFormProps,
   setList: Dispatch<SetStateAction<ListFormProps>>,
   cursor_position: CursorPostion
 ) => {
+  const side_lenght = 100;
+
   const getEquilateralTrianglePoints = (
     xc: number,
     yc: number,
@@ -25,18 +28,21 @@ export const triangle = (
   const array_point = getEquilateralTrianglePoints(
     cursor_position.x,
     cursor_position.y,
-    100
+    triangle_json.side_length
   );
+
   const triangle_item: TriangleProps = {
     id: list.length,
-    type: "triangle",
+    type: triangle_json.type,
     posX: cursor_position.x,
     posY: cursor_position.y,
     point1: array_point[0],
     point2: array_point[1],
     point3: array_point[2],
-    rotate: 30,
-    color: "pink",
+    width: triangle_json.side_length,
+    height: (triangle_json.side_length * Math.sqrt(3)) / 2,
+    rotate: triangle_json.rotate,
+    color: triangle_json.color,
   };
   setList((prevList) => [...prevList, triangle_item]);
 };

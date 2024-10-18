@@ -8,6 +8,8 @@ export type TriangleProps = {
   point3: Position;
   rotate: number;
   color: string;
+  width: number;
+  height: number;
 };
 
 type Position = {

@@ -1,5 +1,5 @@
 import { Camera } from "@/app/types/canvas/camera";
-import { LastMousePosition } from "../initialise/type";
+import { LastMousePosition } from "@/app/types/lastMousePosition";
 
 export const cameraPosition = (
   event: MouseEvent,

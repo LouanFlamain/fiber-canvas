@@ -1,0 +1,6 @@
+{
+  "type": "triangle",
+  "side_length": 100,
+  "color": "gray",
+  "rotate": 30
+}

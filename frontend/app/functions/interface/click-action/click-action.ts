@@ -12,19 +12,20 @@ export const clickAction = (
   list: ListFormProps,
   setList: Dispatch<SetStateAction<ListFormProps>>,
   cursor_position: CursorPostion,
-  setSelectedForm: Dispatch<SetStateAction<SelectedFormProps>>
+  setSelectedForm: Dispatch<SetStateAction<SelectedFormProps>>,
+  setSelectMode: Dispatch<SetStateAction<SelectValue>>
 ) => {
   switch (mode) {
     case "select":
       selectForm(list, cursor_position, setSelectedForm);
       break;
     case "square":
-      createForm().square(list, setList, cursor_position);
+      createForm(setSelectMode).square(list, setList, cursor_position);
       break;
     case "circle":
-      createForm().circle(list, setList, cursor_position);
+      createForm(setSelectMode).circle(list, setList, cursor_position);
       break;
     case "triangle":
-      createForm().triangle(list, setList, cursor_position);
+      createForm(setSelectMode).triangle(list, setList, cursor_position);
   }
 };

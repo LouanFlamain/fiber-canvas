@@ -7,4 +7,7 @@ export type CircleProps = {
   posX: number;
   posY: number;
   color: string;
+  rotate: number;
+  width: number;
+  height: number;
 };
