@@ -4,6 +4,9 @@ import { SelectedFormProps } from "@/app/types/selectedForm";
 import { Dispatch, SetStateAction } from "react";
 import { modifieForm } from "../modifie-form/modifie-form";
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
+import mode_json from "../../../interface/mode.json";
+import { detect } from "../detect/detect";
+import { SquareProps } from "@/app/types/forms/square";
 
 export const mouseDownAction = (
   selectedForm: SelectedFormProps,
@@ -13,7 +16,26 @@ export const mouseDownAction = (
   setLockedCursorPosition: Dispatch<SetStateAction<CursorPostion>>,
   setLockedForm: Dispatch<SetStateAction<FormProps>>
 ) => {
-  const init_function = (action_point: string, element: FormProps) => {
+  if (selectedForm !== null) {
+    const reverse_list = [...list].reverse();
+    for (let i = 0; i < reverse_list.length; i++) {
+      if (list[i].id === selectedForm) {
+        const element = list[i];
+        switch (list[i].type) {
+          case mode_json.mode.square:
+            detect().square(
+              cursor_position,
+              element as SquareProps,
+              setFormSelectMode,
+              setLockedCursorPosition,
+              setLockedForm
+            );
+            break;
+        }
+      }
+    }
+  }
+  /*const init_function = (action_point: string, element: FormProps) => {
     setFormSelectMode(action_point);
     setLockedCursorPosition(cursor_position);
     setLockedForm((prevLockedForm) => ({
@@ -174,5 +196,5 @@ export const mouseDownAction = (
         break;
       }
     }
-  }
+  }*/
 };

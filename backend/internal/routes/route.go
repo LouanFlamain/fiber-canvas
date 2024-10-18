@@ -14,13 +14,13 @@ func SetUpRoutes(app *fiber.App, handler *handlers.HandlerStruct, store *stores.
 
 	// Routes non authentifiées (pas de middleware ici)
 	api.Post("/auth", handler.AuthConnect)
+	api.Post("/user", handler.AddUser)
 	
 	// Groupe de routes nécessitant une authentification
 	authorized := api.Use(middleware.JwtVerifyMiddleWare(store))
 
 	// Routes authentifiées
 	authorized.Get("/user/:id", handler.GetUserById)
-	authorized.Post("/user", handler.AddUser)
 	authorized.Get("/message", handler.GetAllMessage)
 	authorized.Post("/message", handler.AddMessage)
 }

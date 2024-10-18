@@ -1,4 +1,3 @@
-import { FormProps } from "@/app/types/canvas/listForms";
 import { SquareProps } from "@/app/types/forms/square";
 
 export const square = (ctx: CanvasRenderingContext2D, element: SquareProps) => {

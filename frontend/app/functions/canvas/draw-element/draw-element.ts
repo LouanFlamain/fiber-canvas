@@ -1,10 +1,10 @@
 import { FormProps } from "@/app/types/canvas/listForms";
-import { square } from "./square/square";
 import { SquareProps } from "@/app/types/forms/square";
-import { circle } from "./circle/circle";
 import { CircleProps } from "@/app/types/forms/circle";
-import { triangle } from "./triangle/triangle";
 import { TriangleProps } from "@/app/types/forms/triangle";
+import { square } from "../elements/square/square-draw";
+import { circle } from "../elements/circle/circle-draw";
+import { triangle } from "../elements/triangle/triangle-draw";
 
 export const drawElement = (
   ctx: CanvasRenderingContext2D,

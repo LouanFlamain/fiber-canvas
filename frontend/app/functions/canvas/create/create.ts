@@ -1,6 +1,6 @@
-import { circle } from "./circle/circle";
-import { square } from "./square/square";
-import { triangle } from "./triangle/triangle";
+import { circle } from "../elements/circle/circle-create";
+import { square } from "../elements/square/square-create";
+import { triangle } from "../elements/triangle/triangle-create";
 
 export const createForm = () => {
   return {

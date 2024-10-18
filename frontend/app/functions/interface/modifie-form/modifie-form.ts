@@ -1,8 +1,8 @@
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
-import { square } from "./square/square";
 import { ItemPositionProps } from "@/app/types/itemPosition";
 import { FormProps } from "@/app/types/canvas/listForms";
 import { Dispatch, SetStateAction } from "react";
+import { square } from "../../canvas/elements/square/square-modify";
 
 export const modifieForm = () => {
   return {

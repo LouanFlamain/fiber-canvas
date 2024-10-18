@@ -15,7 +15,7 @@ import (
 )
 
 // Fonction qui retourne un middleware avec injection de store
-func JwtVerifyMiddleWare(store stores.StoreStruct) fiber.Handler {
+func JwtVerifyMiddleWare(store *stores.StoreStruct) fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		err_env := godotenv.Load()
 
@@ -31,14 +31,14 @@ func JwtVerifyMiddleWare(store stores.StoreStruct) fiber.Handler {
 		cookies := new(types.Cookies)
 		err := c.CookieParser(cookies)
 		if err != nil {
-			return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-				"error": "access forbidden",
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+				"error": "access unauthorized",
 			})
 		}
 
 		if cookies.AccessToken == "" && cookies.RefreshToken == ""{
-			return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-				"error": "access forbidden not connected",
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+				"error": "access unauthorized",
 			})
 		}
 
@@ -88,8 +88,8 @@ func JwtVerifyMiddleWare(store stores.StoreStruct) fiber.Handler {
 		if !valid {
 			// Si le token est expiré, vérifiez le refresh token
 			if cookies.RefreshToken == "" {
-				return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-					"error": "access forbidden not connected",
+				return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+					"error": "access unauthorized",
 				})
 			}
 
@@ -127,8 +127,8 @@ func JwtVerifyMiddleWare(store stores.StoreStruct) fiber.Handler {
 
 			// Vérification de l'expiration du refresh token
 			if time.Now().Unix() > structPayloadRefresh.Exp {
-				return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-					"error": "access forbidden refresh token expired",
+				return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+					"error": "access unauthorized refresh token expired",
 				})
 			}
 

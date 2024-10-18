@@ -1,7 +1,6 @@
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { ListFormProps } from "@/app/types/canvas/listForms";
 import { CircleProps } from "@/app/types/forms/circle";
-import { SquareProps } from "@/app/types/forms/square";
 import { Dispatch, SetStateAction } from "react";
 
 export const circle = (

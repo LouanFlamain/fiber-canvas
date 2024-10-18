@@ -1,12 +1,12 @@
 import { Camera } from "@/app/types/canvas/camera";
 import { windowDimensionProps } from "@/app/types/canvas/windowDimension";
-import { LastMousePosition } from "./type";
 import { drawInfiniteCanvas } from "../draw/draw";
 import React, { Dispatch, SetStateAction } from "react";
 import { CursorPostion } from "@/app/types/canvas/cursorPositon";
 import { currentCursorPosition } from "../cursor-position/cursorPosition";
 import { zoom } from "../zoom/zoom";
 import { SelectedFormProps } from "@/app/types/selectedForm";
+import { LastMousePosition } from "@/app/types/lastMousePosition";
 
 export const initialiseInfiniteCanvas = (
   canvas: HTMLCanvasElement,

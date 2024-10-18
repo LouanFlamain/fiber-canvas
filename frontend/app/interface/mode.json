@@ -1,0 +1,8 @@
+{
+  "mode": {
+    "select": "select",
+    "square": "square",
+    "circle": "circle",
+    "triangle": "triangle"
+  }
+}
